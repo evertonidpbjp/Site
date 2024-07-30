@@ -235,7 +235,7 @@ export default function Page({
         <div className="flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24">
           <div className="relative lg:w-5/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left animate-slide-in">
             <h1 className="font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-gray-900 leading-tight">
-              Banco de Imagens Sofisticadas para{" "}
+              Imagens Sofisticadas para{" "}
               <span className="text-primary-500">
                 Todos os Seus Projetos
               </span>
@@ -293,41 +293,48 @@ export default function Page({
           </div>
         </div>
         <div className="relative bg-gradient-to-r from-gray-100 via-gray-100 to-gray-100 py-8">
-        
-          <div className="flex flex-wrap justify-center">
-            {filterImages().map((image, index) => (
-              <div
-                key={index}
-                className="m-4 relative cursor-pointer"
-                onClick={() => openModal(image)}
-              >
-                <img
-                  src={image.url}
-                  alt={`Imagem ${index + 1}`}
-                  className="w-64 h-64 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
-                />
-                <div className="absolute top-2 right-2 p-2 bg-white bg-opacity-50 rounded-full">
-                  {favorites.includes(image.url) ? (
-                    <SolidHeartIcon
-                      className="h-6 w-6 text-red-500"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorite(image);
-                      }}
-                    />
-                  ) : (
-                    <HeartIcon
-                      className="h-6 w-6 text-gray-500 hover:text-red-500"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorite(image);
-                      }}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center">
+  {filterImages().map((image, index) => (
+    <div
+      key={index}
+      className="relative m-4 w-64 h-64 overflow-hidden rounded-lg shadow-lg cursor-pointer group transition-transform duration-500 transform hover:scale-105"
+      onClick={() => openModal(image)}
+    >
+      <img
+        src={image.url}
+        alt={`Imagem ${index + 1}`}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 transition-all duration-500 bg-gradient-to-r from-black via-transparent to-black opacity-0 group-hover:opacity-80 group-hover:scale-105 flex items-center justify-center">
+        <div className="text-white text-lg font-bold bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-lg shadow-lg transform scale-100 group-hover:scale-105 transition-transform duration-300">
+          Comprar agora
+        </div>
+      </div>
+      <div className="absolute top-2 right-2 p-2 bg-white bg-opacity-50 rounded-full">
+        {favorites.includes(image.url) ? (
+          <SolidHeartIcon
+            className="h-6 w-6 text-red-500 cursor-pointer transition-transform duration-300 transform hover:scale-125"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite(image);
+            }}
+          />
+        ) : (
+          <HeartIcon
+            className="h-6 w-6 text-gray-500 hover:text-red-500 cursor-pointer transition-transform duration-300 transform hover:scale-125"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite(image);
+            }}
+          />
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+
+          
         </div>
 
         {modalIsOpen && (
@@ -368,11 +375,11 @@ export default function Page({
 
     
          <div className="w-full text-center mb-6">
-           <h2 className="text-4xl font-extrabold text-gray-900">
-             Categoria: <span className="text-blue-600">{currentImage.category}</span>
-           </h2>
+           {/* <h2 className="text-4xl font-extrabold text-gray-900">
+             Categoria: <span className="text-blue-600">{currentImage.tags}</span>
+           </h2> */}
            <p className="text-2xl text-gray-700 mt-2">
-             Preço: <span className="font-semibold">{currentImage.price}</span>
+             Preço: <span className="font-semibold">R$ {currentImage.price}</span>
            </p>
            {currentImage.details && (
              <p className="text-lg text-gray-600 mt-4">
@@ -403,7 +410,7 @@ export default function Page({
                    {formatOptions.map((format) => (
                      <li
                        key={format}
-                       className="py-2 px-4 hover:bg-gray-100 cursor-pointer transition-colors duration-200"
+                       className="py-2 px-4 hover:bg-teal-500  hover:text-white cursor-pointer transition-colors duration-200"
                        onClick={() => downloadImage(format, "1000px")}
                        role="menuitem"
                      >
@@ -429,21 +436,22 @@ export default function Page({
                )}
              </button>
              {showResolutions && (
-               <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg w-full max-h-48 overflow-y-auto transition-transform duration-300 transform translate-y-2 z-10">
-               <ul className="list-none p-0 m-0">
-                 {downloadOptions.map((option) => (
-                   <li
-                     key={option.size}
-                     className="py-2 px-4 flex items-center space-x-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200 rounded-lg"
-                     onClick={() => downloadImage("jpg", option.size)}
-                     role="menuitem"
-                   >
-                     <span className="text-gray-800">{option.label}</span>
-                     <span className="text-gray-500 text-sm">{option.size}</span>
-                   </li>
-                 ))}
-               </ul>
-             </div>
+        <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg w-full max-h-48 overflow-y-auto transition-transform duration-300 transform translate-y-2 z-10">
+        <ul className="list-none p-0 m-0">
+          {downloadOptions.map((option) => (
+            <li
+              key={option.size}
+              className="py-2 px-4  hover:bg-teal-500  hover:text-white flex items-center hover:bg-teal-400 space-x-2 cursor-pointer transition-colors duration-200 rounded-lg"
+              onClick={() => downloadImage("jpg", option.size)}
+              role="menuitem"
+            >
+              <span className="hover:bg-teal-500  hover:text-white ">{option.label}</span>
+              <span className="hover:bg-teal-500  hover:text-white text-sm">{option.size}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
              
              )}
            </div>
