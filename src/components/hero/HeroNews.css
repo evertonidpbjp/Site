@@ -1,0 +1,43 @@
+/* heroNews.css */
+
+.hero-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slide-in {
+    animation: slideIn 1s ease-out forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .bg-primary-500 {
+    background-color: #4a90e2; /* Alterar a cor de acordo com sua paleta */
+  }
+  
+  .text-primary-500 {
+    color: #4a90e2; /* Alterar a cor de acordo com sua paleta */
+  }
+  
+  .text-gray-100 {
+    color: #f5f5f5; /* Alterar a cor de acordo com sua paleta */
+  }
+  
+  .bg-gray-100 {
+    background-color: #f5f5f5; /* Alterar a cor de acordo com sua paleta */
+  }
+  
+  button:hover {
+    background-color: #4a90e2; /* Alterar a cor de acordo com sua paleta */
+    color: #f5f5f5; /* Alterar a cor de acordo com sua paleta */
+  }
+  

@@ -1,0 +1,13 @@
+/* src/components/animation.css */
+
+.animation-container {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  .animation-container.animate {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  

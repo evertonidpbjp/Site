@@ -1,0 +1,103 @@
+/* Estilos globais */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Menu superior */
+  .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    z-index: 10;
+  }
+  
+  .menu a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  .menu a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Círculos de miniaturas */
+  .thumbnails {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+  }
+  
+  .thumbnail {
+    width: 48px; /* Diminuindo o tamanho para 48px */
+    height: 48px; /* Diminuindo o tamanho para 48px */
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+  }
+  
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Slide container */
+  .slide {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide .content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: left;
+  }
+  
+  .slide .content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .slide .content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Personalizações para o Slideshow */
+  .h-screen-plus {
+    height: 60vh; /* Aumenta a altura além da tela */
+  }
+  
+  .shadowed-menu {
+    height: 20vh; /* Diminuindo a altura da parte sombreada */
+  }
+  
+  .shadowed-menu-content {
+    height: 10vh; /* Ajustando a altura da parte sombreada do conteúdo */
+  }
+  
